@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import logo from '../assets/images/Logo.png'
 
@@ -8,8 +8,8 @@ const navLinks = [
   { name: 'Golf Course', path: '/course' },
   { name: 'Green Fees', path: '/green-fees' },
   { name: 'Driving Range', path: '/driving-range' },
-  { name: "What's On", path: '/#whatson' },
-  { name: 'About Us', path: '/course#aboutus' },
+  { name: "What's On", path: '/', hash: 'whatson' },
+  { name: 'About Us', path: '/course', hash: 'aboutus' },
   { name: 'Contact Us', path: '/contact' },
 ]
 
@@ -17,6 +17,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20)
@@ -29,16 +30,42 @@ export default function Navbar() {
     setMenuOpen(false)
   }, [location.pathname])
 
-  const isActive = (path) => {
-    const [pathname] = path.split('#')
-    return pathname === '/'
-      ? location.pathname === '/'
-      : location.pathname.startsWith(pathname)
+  // Scroll to hash after navigation
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '')
+      const el = document.getElementById(id)
+      if (el) {
+        setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100)
+      }
+    }
+  }, [location])
+
+  const handleNavClick = (e, link) => {
+    if (link.hash) {
+      e.preventDefault()
+      setMenuOpen(false)
+      if (location.pathname === link.path) {
+        // Already on the right page — just scroll
+        const el = document.getElementById(link.hash)
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      } else {
+        // Navigate then scroll
+        navigate(`${link.path}#${link.hash}`)
+      }
+    }
   }
 
-  const linkClass = (path) =>
+  const isActive = (link) => {
+    if (link.hash) return false // hash links never stay "active"
+    return link.path === '/'
+      ? location.pathname === '/'
+      : location.pathname.startsWith(link.path)
+  }
+
+  const linkClass = (link) =>
     `font-body text-sm font-medium tracking-wide transition-colors duration-200 ${
-      isActive(path)
+      isActive(link)
         ? 'text-golf-gold border-b-2 border-golf-gold pb-0.5'
         : 'text-white hover:text-golf-gold'
     }`
@@ -58,14 +85,20 @@ export default function Navbar() {
             src={logo}
             alt="Dago Heritage Golf"
             className="h-10 md:h-12 w-auto object-contain"
+            onError={(e) => { e.target.src = '/placeholder.jpg' }}
           />
         </Link>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-6 lg:gap-8">
-          {navLinks.map(({ name, path }) => (
-            <Link key={path} to={path} className={linkClass(path)}>
-              {name}
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              to={link.hash ? `${link.path}#${link.hash}` : link.path}
+              className={linkClass(link)}
+              onClick={(e) => handleNavClick(e, link)}
+            >
+              {link.name}
             </Link>
           ))}
         </nav>
@@ -105,9 +138,14 @@ export default function Navbar() {
           transition={{ duration: 0.25, ease: 'easeOut' }}
           className="md:hidden bg-golf-green/95 backdrop-blur-md px-6 pb-6 pt-2 flex flex-col gap-4"
         >
-          {navLinks.map(({ name, path }) => (
-            <Link key={path} to={path} className={linkClass(path)}>
-              {name}
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              to={link.hash ? `${link.path}#${link.hash}` : link.path}
+              className={linkClass(link)}
+              onClick={(e) => handleNavClick(e, link)}
+            >
+              {link.name}
             </Link>
           ))}
         </motion.nav>
