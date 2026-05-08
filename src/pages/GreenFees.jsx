@@ -9,6 +9,7 @@ import heroImg from '../assets/images/Hero-image-dekstop.jpg'
 import SectionTitle from '../components/ui/SectionTitle'
 import AnimatedSection from '../components/ui/AnimatedSection'
 import Button from '../components/ui/Button'
+import PageTitle from '../components/ui/PageTitle'
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -64,6 +65,7 @@ const promoItems = [
 export default function GreenFees() {
   return (
     <div className="bg-dark-bg text-white font-body">
+      <PageTitle title="Green Fees" />
 
       {/* ── Hero Section ─────────────────────────────────────────────────── */}
       <section className="relative h-[60vh] min-h-[480px] flex items-center justify-center overflow-hidden">

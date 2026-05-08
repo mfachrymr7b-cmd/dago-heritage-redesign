@@ -9,6 +9,7 @@ import SectionTitle from '../components/ui/SectionTitle'
 import AnimatedSection from '../components/ui/AnimatedSection'
 import ImageCard from '../components/ui/ImageCard'
 import Button from '../components/ui/Button'
+import PageTitle from '../components/ui/PageTitle'
 import promo1 from '../assets/images/Promo-1.jpg'
 import promo2 from '../assets/images/Promo-2.jpg'
 import promo3 from '../assets/images/Promo-3.jpg'
@@ -46,6 +47,7 @@ export default function Home() {
   const [lightbox, setLightbox] = useState({ open: false, index: 0 })
   return (
     <div className="bg-dark-bg">
+      <PageTitle title="Home" />
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">

@@ -12,6 +12,7 @@ import promo2 from '../assets/images/Promo-2.jpg'
 import logoImg from '../assets/images/Logo.png'
 import SectionTitle from '../components/ui/SectionTitle'
 import AnimatedSection from '../components/ui/AnimatedSection'
+import PageTitle from '../components/ui/PageTitle'
 
 const galleryImages = [
   { src: heroImg, alt: 'Dago Heritage Golf Course aerial view' },
@@ -60,8 +61,7 @@ export default function GolfCourse() {
 
   return (
     <div className="bg-dark-bg text-white font-body">
-
-      {/* Hero Section */}
+      <PageTitle title="Golf Course" />
       <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
         {/* Background Image */}
         <img
@@ -210,7 +210,7 @@ export default function GolfCourse() {
                   src={featureImg}
                   alt="Dago Heritage Golf Course fairway with mountain backdrop"
                   loading="lazy"
-                  className="w-full h-[420px] object-cover"
+                  className="w-full h-64 md:h-[420px] object-cover"
                 />
                 {/* Overlay badge */}
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-golf-green/80 to-transparent px-6 py-5">
@@ -219,7 +219,7 @@ export default function GolfCourse() {
                 </div>
               </div>
               {/* Decorative borders */}
-              <div className="absolute -bottom-4 -right-4 w-full h-full border-2 border-golf-gold/30 rounded-xl z-0" />
+              <div className="hidden md:block absolute -bottom-4 -right-4 w-full h-full border-2 border-golf-gold/30 rounded-xl z-0" />
             </motion.div>
 
           </div>

@@ -85,7 +85,7 @@ export default function Footer() {
           </div>
 
           {/* Column 2 — Golf Course Info */}
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 border-t border-golf-green/20 pt-8 md:border-t-0 md:pt-0">
             <div className="mb-2">
               <p className="text-golf-gold text-xs tracking-widest uppercase mb-2">Golf Course</p>
               <h3 className="font-heading text-lg font-bold text-white leading-snug">
@@ -138,7 +138,7 @@ export default function Footer() {
           </div>
 
           {/* Column 3 — Driving Range Info */}
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 border-t border-golf-green/20 pt-8 md:border-t-0 md:pt-0">
             <div className="mb-2">
               <p className="text-golf-gold text-xs tracking-widest uppercase mb-2">Driving Range</p>
               <h3 className="font-heading text-lg font-bold text-white leading-snug">
