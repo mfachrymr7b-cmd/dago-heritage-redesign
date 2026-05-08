@@ -132,9 +132,9 @@ export default function GreenFees() {
               <table className="w-full text-sm font-body">
                 <thead>
                   <tr className="bg-golf-green text-white">
-                    <th className="px-6 py-4 text-left tracking-widest uppercase text-xs">Category</th>
-                    <th className="px-6 py-4 text-center tracking-widest uppercase text-xs">Member</th>
-                    <th className="px-6 py-4 text-center tracking-widest uppercase text-xs">Guest</th>
+                    <th className="px-3 md:px-6 py-3 md:py-4 text-left tracking-widest uppercase text-xs">Category</th>
+                    <th className="px-3 md:px-6 py-3 md:py-4 text-center tracking-widest uppercase text-xs">Member</th>
+                    <th className="px-3 md:px-6 py-3 md:py-4 text-center tracking-widest uppercase text-xs">Guest</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -143,9 +143,9 @@ export default function GreenFees() {
                       key={row.category}
                       className={`border-t border-golf-green/10 ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}
                     >
-                      <td className="px-6 py-4 font-semibold text-golf-green">{row.category}</td>
-                      <td className="px-6 py-4 text-center text-gray-700">{row.member}</td>
-                      <td className="px-6 py-4 text-center text-gray-700">{row.guest}</td>
+                      <td className="px-3 md:px-6 py-3 md:py-4 font-semibold text-golf-green text-sm">{row.category}</td>
+                      <td className="px-3 md:px-6 py-3 md:py-4 text-center text-gray-700 text-sm">{row.member}</td>
+                      <td className="px-3 md:px-6 py-3 md:py-4 text-center text-gray-700 text-sm">{row.guest}</td>
                     </tr>
                   ))}
                 </tbody>

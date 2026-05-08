@@ -335,8 +335,8 @@ export default function GolfCourse() {
           />
 
           {/* Hole Selector — pipe-separated like original */}
-          <div className="flex flex-wrap items-center justify-center gap-0 mb-8 font-body text-sm">
-            <span className="text-white font-bold tracking-widest uppercase mr-3">HOLE</span>
+          <div className="flex flex-wrap items-center justify-center gap-0 mb-8 font-body text-xs md:text-sm px-2">
+            <span className="text-white font-bold tracking-widest uppercase mr-2">HOLE</span>
             {holes.map((hole, i) => (
               <span key={hole} className="flex items-center">
                 <button
@@ -357,7 +357,7 @@ export default function GolfCourse() {
           {/* Hole Detail — 2 column layout */}
           <motion.div
             key={activeHole}
-            className="grid md:grid-cols-2 gap-0 rounded-2xl overflow-hidden shadow-2xl max-w-4xl mx-auto"
+            className="grid grid-cols-1 md:grid-cols-2 gap-0 rounded-2xl overflow-hidden shadow-2xl max-w-4xl mx-auto"
             initial={{ opacity: 0, scale: 0.97 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.35 }}
