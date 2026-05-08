@@ -59,6 +59,7 @@ export default function Home() {
             src={heroDesktop}
             alt="Dago Heritage Golf Course"
             className="w-full h-full object-cover object-center"
+            onError={(e) => { e.target.src = '/placeholder.jpg' }}
           />
         </picture>
 
@@ -157,7 +158,7 @@ export default function Home() {
           />
 
           {/* 3 Cards */}
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5 md:gap-6">
             <AnimatedSection direction="up" delay={0}>
               <ImageCard
                 src={hotelImg}
@@ -252,6 +253,7 @@ export default function Home() {
                     alt={news.title}
                     loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    onError={(e) => { e.target.src = '/placeholder.jpg' }}
                   />
                 </div>
 
@@ -352,6 +354,7 @@ export default function Home() {
                         alt={item.alt}
                         loading="lazy"
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        onError={(e) => { e.target.src = '/placeholder.jpg' }}
                       />
                       {/* Hover overlay */}
                       <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-2">
@@ -424,6 +427,7 @@ export default function Home() {
                   src={promoItems[lightbox.index].src}
                   alt={promoItems[lightbox.index].alt}
                   className="w-full max-h-[80vh] object-contain rounded-xl shadow-2xl"
+                  onError={(e) => { e.target.src = '/placeholder.jpg' }}
                 />
                 {/* Caption */}
                 <div className="mt-3 text-center">

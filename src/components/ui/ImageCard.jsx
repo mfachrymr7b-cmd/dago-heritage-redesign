@@ -37,6 +37,7 @@ export default function ImageCard({
         src={src}
         alt={alt}
         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        onError={(e) => { e.target.src = '/placeholder.jpg' }}
       />
 
       {/* Default gradient — always visible */}

@@ -2,6 +2,18 @@ import { motion } from 'framer-motion'
 import heroImg from '../assets/images/Hero-driving-image-dekstop.jpg'
 import featureImg from '../assets/images/Feature-driving.jpg'
 import heroRangeImg from '../assets/images/Hero-driving-range.jpg'
+import imgNewBuilding from '../assets/images/new-building.jpg'
+import imgSpecialBays from '../assets/images/spesial-bays.jpg'
+import imgLounge from '../assets/images/exclusive-lounge.jpg'
+import imgHospitality from '../assets/images/hospitality.jpg'
+import imgRegularBays from '../assets/images/regular-bays.jpg'
+import imgSimulator from '../assets/images/golf-simulator.jpg'
+import imgLongShort from '../assets/images/long-&-short.jpg'
+import imgLockerRoom from '../assets/images/locker-room.jpg'
+import imgVipBays from '../assets/images/vip-bays.jpg'
+import imgPrayerRoom from '../assets/images/prayer-room.jpg'
+import imgTopGolf from '../assets/images/top-golf.jpg'
+import imgTripma from '../assets/images/tripma-fitbox.jpg'
 import SectionTitle from '../components/ui/SectionTitle'
 import AnimatedSection from '../components/ui/AnimatedSection'
 import Button from '../components/ui/Button'
@@ -9,49 +21,64 @@ import PageTitle from '../components/ui/PageTitle'
 
 const facilities = [
   {
-    icon: '🏢',
+    img: imgNewBuilding,
     title: 'New Building',
-    description: 'A brand-new state-of-the-art facility designed for comfort and modern golfing excellence.',
+    description: 'Designed by combining modern, classic and back to nature design, our new driving range will be the best place to relax and sharpen your skills.',
   },
   {
-    icon: '🎯',
+    img: imgSpecialBays,
     title: 'Special Bays',
-    description: 'Specially designed bays equipped with the latest technology for an enhanced practice experience.',
+    description: 'The new bays provides new advanced practice support equipments.',
   },
   {
-    icon: '🛋️',
+    img: imgLounge,
     title: 'Exclusive Lounge',
-    description: 'Relax in our exclusive lounge area between sessions, offering premium comfort and ambiance.',
+    description: 'Our exclusive lounge provides comfort for both the body and mind.',
   },
   {
-    icon: '🍽️',
+    img: imgHospitality,
     title: 'Hospitality',
-    description: 'World-class hospitality services ensuring every visit is a memorable and enjoyable experience.',
+    description: "The new driving's staffs brings the highest hospitality programs that will ease your day.",
   },
   {
-    icon: '⛳',
+    img: imgRegularBays,
     title: 'Regular Bays',
-    description: 'Well-maintained regular bays suitable for golfers of all skill levels to practice and improve.',
+    description: 'Each player will have a spacious bay that provides better focus and confidence.',
   },
   {
-    icon: '🖥️',
+    img: imgSimulator,
     title: 'Golf Simulator',
-    description: 'Experience realistic golf simulation with cutting-edge technology for indoor practice sessions.',
+    description: 'Sharpen your golf skills in our most advanced driving range that uses the latest technology.',
   },
   {
-    icon: '📏',
+    img: imgLongShort,
     title: 'Long & Short Ranges',
-    description: 'Comprehensive practice areas covering both long-distance drives and short-game precision shots.',
+    description: 'Practice your long and short games in our driving range to the best of your skills and abilities.',
   },
   {
-    icon: '🔒',
+    img: imgLockerRoom,
     title: 'Locker Room',
-    description: 'Secure and well-appointed locker rooms providing privacy and convenience for all guests.',
+    description: 'Equipped with locker room to keep your valuables so you can practice worry-free.',
   },
   {
-    icon: '👑',
+    img: imgVipBays,
     title: 'VIP Bays',
-    description: 'Premium VIP bays offering an exclusive and private environment for discerning golfers.',
+    description: 'VIP bays are available for those who privacy in their practice. Please contact our staff to book ahead.',
+  },
+  {
+    img: imgPrayerRoom,
+    title: 'Prayer Room',
+    description: 'An excellent and spacious prayer room is also available in our building.',
+  },
+  {
+    img: imgTopGolf,
+    title: 'Top Golf',
+    description: 'As one of our precious tenants, Top Golf provides variety of choices to support your practice needs.',
+  },
+  {
+    img: imgTripma,
+    title: 'Tripma Fitbox',
+    description: 'As one of our precious tenants, Tripma Fitbox provides variety of choices to support your practice needs.',
   },
 ]
 
@@ -91,6 +118,7 @@ export default function DrivingRange() {
           src={heroImg}
           alt="Dago Heritage Driving Range"
           className="absolute inset-0 w-full h-full object-cover object-center"
+          onError={(e) => { e.target.src = '/placeholder.jpg' }}
         />
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-dark-bg/60 via-golf-green/50 to-dark-bg/90" />
@@ -107,7 +135,7 @@ export default function DrivingRange() {
           </motion.p>
 
           <motion.h1
-            className="font-heading text-5xl md:text-7xl font-bold text-white leading-tight mb-6"
+            className="font-heading text-3xl sm:text-5xl md:text-7xl font-bold text-white leading-tight mb-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.25 }}
@@ -175,79 +203,33 @@ export default function DrivingRange() {
 
       {/* ─── Section 2: About ─── */}
       <section id="about" className="py-20 bg-light-bg">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-14 items-center">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+          >
+            <p className="font-body text-xs tracking-[0.3em] uppercase mb-3 text-golf-green text-center">
+              Our Facility
+            </p>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-golf-green leading-snug mb-4 text-center">
+              Brand New Driving Range
+            </h2>
+            <div className="h-0.5 w-12 bg-golf-gold mb-6 mx-auto" />
 
-            {/* Left — Text */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: 'easeOut' }}
-            >
-              <p className="font-body text-xs tracking-[0.3em] uppercase mb-3 text-golf-green">
-                Our Facility
-              </p>
-              <h2 className="font-heading text-3xl md:text-4xl font-bold text-golf-green leading-snug mb-4">
-                Brand New Driving Range
-              </h2>
-              <div className="h-0.5 w-12 bg-golf-gold mb-6" />
+            <p className="font-body text-gray-700 leading-relaxed mb-5">
+              Dago Heritage 1917 proudly presents its brand-new driving range — a world-class
+              facility designed to elevate your golf practice experience. Equipped with the latest
+              technology and premium amenities, our driving range caters to golfers of all levels.
+            </p>
 
-              <p className="font-body text-gray-700 leading-relaxed mb-5">
-                Dago Heritage 1917 proudly presents its brand-new driving range — a world-class
-                facility designed to elevate your golf practice experience. Equipped with the latest
-                technology and premium amenities, our driving range caters to golfers of all levels.
-              </p>
-
-              <p className="font-body text-gray-700 leading-relaxed mb-8">
-                Whether you're sharpening your long game, perfecting your short game, or exploring
-                our immersive golf simulator, every session at Dago Heritage Driving Range promises
-                an exceptional and stress-free practice environment.
-              </p>
-
-              {/* Highlight Badges */}
-              <div className="grid grid-cols-2 gap-3">
-                {[
-                  { icon: '🏆', label: 'VIP Bays Available' },
-                  { icon: '🖥️', label: 'Golf Simulator' },
-                  { icon: '🌿', label: 'Long & Short Ranges' },
-                  { icon: '🛋️', label: 'Exclusive Lounge' },
-                ].map((badge) => (
-                  <div
-                    key={badge.label}
-                    className="flex items-center gap-3 bg-golf-green/10 border border-golf-green/20 rounded-lg px-4 py-3"
-                  >
-                    <span className="text-xl">{badge.icon}</span>
-                    <span className="font-body text-sm font-semibold text-golf-green">{badge.label}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Right — Image */}
-            <motion.div
-              className="relative"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: 'easeOut', delay: 0.15 }}
-            >
-              <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl">
-                <img
-                  src={featureImg}
-                  alt="Dago Heritage Driving Range facility"
-                  loading="lazy"
-                  className="w-full h-64 md:h-[420px] object-cover"
-                />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-golf-green/80 to-transparent px-6 py-5">
-                  <p className="font-heading text-white text-lg font-semibold">Dago Heritage Driving Range</p>
-                  <p className="font-body text-golf-gold text-sm">Bandung, West Java · Est. 1917</p>
-                </div>
-              </div>
-              <div className="hidden md:block absolute -bottom-4 -right-4 w-full h-full border-2 border-golf-gold/30 rounded-xl z-0" />
-            </motion.div>
-
-          </div>
+            <p className="font-body text-gray-700 leading-relaxed">
+              Whether you're sharpening your long game, perfecting your short game, or exploring
+              our immersive golf simulator, every session at Dago Heritage Driving Range promises
+              an exceptional and stress-free practice environment.
+            </p>
+          </motion.div>
         </div>
       </section>
 
@@ -257,22 +239,28 @@ export default function DrivingRange() {
           <SectionTitle
             title="Our Facilities"
             subtitle="What We Offer"
-            description="Dago Heritage Driving Range offers 12 world-class facilities designed to provide the ultimate golf practice experience for every level of golfer."
+            description="The new DAGO Heritage Driving Range offers range of facilities to meet your needs. From exclusive locker room, VIP rooms, restaurant, ball room, pro shop and more."
             align="center"
             theme="dark"
           />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* 2-column image grid like original website */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-8">
             {facilities.map((item, i) => (
-              <AnimatedSection key={item.title} direction="up" delay={i * 0.08}>
-                <div
-                  className="group bg-golf-green/10 border border-golf-green/30 rounded-xl p-8 cursor-default
-                             transition-all duration-300
-                             hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(26,92,56,0.4)] hover:border-golf-gold/50"
-                >
-                  <div className="text-4xl mb-5">{item.icon}</div>
-                  <div className="w-8 h-0.5 bg-golf-gold mb-5 transition-all duration-300 group-hover:w-14" />
-                  <h3 className="font-heading text-xl font-bold text-white mb-3 group-hover:text-golf-gold transition-colors duration-300">
+              <AnimatedSection key={item.title} direction="up" delay={i * 0.06}>
+                <div className="group">
+                  {/* Image */}
+                  <div className="overflow-hidden rounded-2xl mb-4">
+                    <img
+                      src={item.img}
+                      alt={item.title}
+                      loading="lazy"
+                      className="w-full h-44 md:h-56 object-cover transition-transform duration-500 group-hover:scale-105"
+                      onError={(e) => { e.target.src = '/placeholder.jpg' }}
+                    />
+                  </div>
+                  {/* Text */}
+                  <h3 className="font-heading text-xl font-bold text-white mb-2 group-hover:text-golf-gold transition-colors duration-300">
                     {item.title}
                   </h3>
                   <p className="font-body text-gray-400 text-sm leading-relaxed">
@@ -282,20 +270,6 @@ export default function DrivingRange() {
               </AnimatedSection>
             ))}
           </div>
-
-          {/* Remaining facilities as tags */}
-          <AnimatedSection direction="up" delay={0.3} className="mt-10">
-            <div className="flex flex-wrap justify-center gap-3">
-              {['Prayer Room', 'Top Golf', 'Tripma Fitbox'].map((name) => (
-                <span
-                  key={name}
-                  className="inline-flex items-center gap-2 bg-golf-green/20 border border-golf-green/40 rounded-full px-5 py-2 font-body text-sm text-golf-gold"
-                >
-                  ✦ {name}
-                </span>
-              ))}
-            </div>
-          </AnimatedSection>
         </div>
       </section>
 
@@ -310,7 +284,7 @@ export default function DrivingRange() {
             theme="light"
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-stretch">
             {pricingCards.map((card, i) => (
               <AnimatedSection key={card.title} direction="up" delay={i * 0.12}>
                 <div
@@ -400,6 +374,7 @@ export default function DrivingRange() {
           alt="Dago Heritage Driving Range"
           loading="lazy"
           className="absolute inset-0 w-full h-full object-cover object-center opacity-20"
+          onError={(e) => { e.target.src = '/placeholder.jpg' }}
         />
         {/* Pattern overlay */}
         <div
@@ -416,7 +391,7 @@ export default function DrivingRange() {
             <p className="font-body text-xs tracking-[0.3em] uppercase mb-3 text-golf-gold">
               Get In Touch
             </p>
-            <h2 className="font-heading text-3xl md:text-5xl font-bold text-white leading-tight mb-4">
+            <h2 className="font-heading text-2xl md:text-5xl font-bold text-white leading-tight mb-4">
               Ready to Tee Off?
             </h2>
             <div className="w-16 h-0.5 bg-golf-gold mx-auto mb-6" />

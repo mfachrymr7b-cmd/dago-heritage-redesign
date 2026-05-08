@@ -45,6 +45,7 @@ export default function Footer() {
                 src={logo}
                 alt="Dago Heritage 1917"
                 className="h-14 w-auto object-contain brightness-0 invert"
+                onError={(e) => { e.target.src = '/placeholder.jpg' }}
               />
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs">

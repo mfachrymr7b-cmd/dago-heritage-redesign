@@ -6,6 +6,7 @@ import GolfCourse from './pages/GolfCourse'
 import GreenFees from './pages/GreenFees'
 import DrivingRange from './pages/DrivingRange'
 import ContactUs from './pages/ContactUs'
+import NotFound from './pages/NotFound'
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="/green-fees" element={<GreenFees />} />
         <Route path="/driving-range" element={<DrivingRange />} />
         <Route path="/contact" element={<ContactUs />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </BrowserRouter>

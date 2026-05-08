@@ -85,6 +85,7 @@ export default function Navbar() {
             src={logo}
             alt="Dago Heritage Golf"
             className="h-10 md:h-12 w-auto object-contain"
+            onError={(e) => { e.target.src = '/placeholder.jpg' }}
           />
         </Link>
 
