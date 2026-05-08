@@ -1,11 +1,14 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import heroDesktop from '../assets/images/Hero-image-dekstop.jpg'
 import heroMobile from '../assets/images/Hero-image-mobile.jpg'
 import hotelImg from '../assets/images/Feature-hotel.jpg'
 import courseImg from '../assets/images/Feature-golf-course.jpg'
 import drivingImg from '../assets/images/Feature-driving.jpg'
+import SectionTitle from '../components/ui/SectionTitle'
+import AnimatedSection from '../components/ui/AnimatedSection'
+import ImageCard from '../components/ui/ImageCard'
+import Button from '../components/ui/Button'
 import promo1 from '../assets/images/Promo-1.jpg'
 import promo2 from '../assets/images/Promo-2.jpg'
 import promo3 from '../assets/images/Promo-3.jpg'
@@ -17,6 +20,7 @@ import promo9 from '../assets/images/Promo-9.jpg'
 import promo11 from '../assets/images/Promo-11.jpg'
 import news1 from '../assets/images/News-1.jpg'
 import news2 from '../assets/images/News-2.jpg'
+
 const promoItems = [
   { src: promo1,  tab: 'Event',        alt: 'Event 1' },
   { src: promo2,  tab: 'Golf Course',  alt: 'Golf Course 1' },
@@ -101,20 +105,12 @@ export default function Home() {
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
             {...fadeUp(0.7)}
           >
-            <Link
-              to="/course"
-              className="w-full sm:w-auto px-8 py-3.5 bg-golf-gold text-dark-bg font-body font-semibold text-sm tracking-widest uppercase rounded-sm
-                         hover:bg-white hover:text-dark-bg transition-all duration-300 shadow-lg"
-            >
+            <Button variant="secondary" href="/course" size="md">
               Explore Our Course
-            </Link>
-            <Link
-              to="/contact"
-              className="w-full sm:w-auto px-8 py-3.5 border border-white text-white font-body font-semibold text-sm tracking-widest uppercase rounded-sm
-                         hover:bg-white hover:text-dark-bg transition-all duration-300"
-            >
+            </Button>
+            <Button variant="outline" href="/contact" size="md">
               Contact Us
-            </Link>
+            </Button>
           </motion.div>
         </div>
 
@@ -147,136 +143,70 @@ export default function Home() {
       </section>
 
       {/* Explore Dago Heritage Section */}
-      <section className="py-24 bg-dark-bg">
+      <section className="py-20 bg-dark-bg">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Heading */}
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="font-body text-golf-gold text-xs tracking-[0.3em] uppercase mb-3">
-              Discover More
-            </p>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-4">
-              Explore Dago Heritage
-            </h2>
-            <div className="w-12 h-0.5 bg-golf-gold mx-auto" />
-          </motion.div>
+          <SectionTitle
+            title="Explore Dago Heritage"
+            subtitle="Discover More"
+            align="center"
+            theme="dark"
+          />
 
           {/* 3 Cards */}
           <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                img: hotelImg,
-                title: 'Swiss-Belresort Hotel',
-                desc: 'Experience world-class hospitality at Swiss-Belresort, offering luxurious rooms and stunning views of the Bandung highlands — the perfect retreat after a round of golf.',
-                href: 'https://www.swiss-belhotel.com',
-                external: true,
-                label: 'Visit Website',
-              },
-              {
-                img: courseImg,
-                title: 'Golf Course',
-                href: '/course',
-                external: false,
-                desc: 'Play on one of Indonesia\'s oldest and most prestigious 18-hole championship courses, set against the breathtaking scenery of Dago, Bandung since 1917.',
-                label: 'Explore Course',
-              },
-              {
-                img: drivingImg,
-                title: 'Driving Range',
-                href: '/driving-range',
-                external: false,
-                desc: 'Sharpen your swing at our state-of-the-art computerized driving range — perfect for practice sessions or a fun outing with friends and family.',
-                label: 'Learn More',
-              },
-            ].map((card, i) => (
-              <motion.div
-                key={card.title}
-                className="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer"
-                initial={{ opacity: 0, y: 32 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.15 }}
-              >
-                {/* Image */}
-                <div className="overflow-hidden h-72 md:h-80">
-                  <img
-                    src={card.img}
-                    alt={card.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                </div>
-
-                {/* Default overlay — always visible at bottom */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-
-                {/* Default title at bottom */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 transition-all duration-400 group-hover:opacity-0 group-hover:translate-y-4">
-                  <h3 className="font-heading text-xl font-bold text-white">{card.title}</h3>
-                </div>
-
-                {/* Hover overlay — full cover */}
-                <div className="absolute inset-0 bg-golf-green/85 flex flex-col items-center justify-center px-6 text-center
-                                opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0
-                                transition-all duration-400">
-                  <div className="w-8 h-0.5 bg-golf-gold mb-4" />
-                  <h3 className="font-heading text-2xl font-bold text-white mb-3">
-                    {card.title}
-                  </h3>
-                  <p className="font-body text-gray-200 text-sm leading-relaxed mb-6">
-                    {card.desc}
-                  </p>
-                  {card.external ? (
-                    <a
-                      href={card.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block px-6 py-2.5 border border-golf-gold text-golf-gold font-body text-xs tracking-widest uppercase
-                                 hover:bg-golf-gold hover:text-dark-bg transition-all duration-300 rounded-sm"
-                    >
-                      {card.label} ↗
-                    </a>
-                  ) : (
-                    <Link
-                      to={card.href}
-                      className="inline-block px-6 py-2.5 border border-golf-gold text-golf-gold font-body text-xs tracking-widest uppercase
-                                 hover:bg-golf-gold hover:text-dark-bg transition-all duration-300 rounded-sm"
-                    >
-                      {card.label}
-                    </Link>
-                  )}
-                </div>
-              </motion.div>
-            ))}
+            <AnimatedSection direction="up" delay={0}>
+              <ImageCard
+                src={hotelImg}
+                alt="Swiss-Belresort Hotel Bandung"
+                title="Swiss-Belresort Hotel"
+                description="Experience world-class hospitality at Swiss-Belresort, offering luxurious rooms and stunning views of the Bandung highlands — the perfect retreat after a round of golf."
+                href="https://www.swiss-belhotel.com"
+                external={true}
+                label="Visit Website"
+                aspect="landscape"
+              />
+            </AnimatedSection>
+            <AnimatedSection direction="up" delay={0.15}>
+              <ImageCard
+                src={courseImg}
+                alt="Dago Heritage Golf Course Fairway"
+                title="Golf Course"
+                description="Play on one of Indonesia's oldest and most prestigious 18-hole championship courses, set against the breathtaking scenery of Dago, Bandung since 1917."
+                href="/course"
+                external={false}
+                label="Explore Course"
+                aspect="landscape"
+              />
+            </AnimatedSection>
+            <AnimatedSection direction="up" delay={0.3}>
+              <ImageCard
+                src={drivingImg}
+                alt="Dago Heritage Driving Range"
+                title="Driving Range"
+                description="Sharpen your swing at our state-of-the-art computerized driving range — perfect for practice sessions or a fun outing with friends and family."
+                href="/driving-range"
+                external={false}
+                label="Learn More"
+                aspect="landscape"
+              />
+            </AnimatedSection>
           </div>
         </div>
       </section>
 
       {/* Latest News Section */}
-      <section className="py-24 bg-light-bg">
+      <section className="py-20 bg-light-bg">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Heading */}
-          <motion.div
-            className="text-center mb-14"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="font-body text-golf-green text-xs tracking-[0.3em] uppercase mb-3">
-              Stay Updated
-            </p>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-golf-green mb-4">
-              Latest News
-            </h2>
-            <div className="w-12 h-0.5 bg-golf-gold mx-auto" />
-          </motion.div>
+          <SectionTitle
+            title="Latest News"
+            subtitle="Stay Updated"
+            align="center"
+            theme="light"
+          />
 
           {/* 2 News Cards */}
           <div className="grid md:grid-cols-2 gap-8">
@@ -318,6 +248,7 @@ export default function Home() {
                   <img
                     src={news.img}
                     alt={news.title}
+                    loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
@@ -362,25 +293,16 @@ export default function Home() {
       </section>
 
       {/* What's On Section */}
-      <section id="whatson" className="py-24 bg-light-bg">
+      <section id="whatson" className="py-20 bg-light-bg">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Heading */}
-          <motion.div
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="font-body text-golf-green text-xs tracking-[0.3em] uppercase mb-3">
-              Latest Updates
-            </p>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-golf-green mb-4">
-              What's On
-            </h2>
-            <div className="w-12 h-0.5 bg-golf-gold mx-auto" />
-          </motion.div>
+          <SectionTitle
+            title="What's On"
+            subtitle="Latest Updates"
+            align="center"
+            theme="light"
+          />
 
           {/* Tab Filter */}
           <motion.div
@@ -426,6 +348,7 @@ export default function Home() {
                       <img
                         src={item.src}
                         alt={item.alt}
+                        loading="lazy"
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
                       {/* Hover overlay */}

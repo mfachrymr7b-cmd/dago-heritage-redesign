@@ -10,17 +10,19 @@ import heroDrivingRange from '../assets/images/Hero-driving-range.jpg'
 import promo1 from '../assets/images/Promo-1.jpg'
 import promo2 from '../assets/images/Promo-2.jpg'
 import logoImg from '../assets/images/Logo.png'
+import SectionTitle from '../components/ui/SectionTitle'
+import AnimatedSection from '../components/ui/AnimatedSection'
 
 const galleryImages = [
-  { src: heroImg, alt: 'Golf Course' },
-  { src: featureImg, alt: 'Fairway' },
-  { src: featureHotel, alt: 'Club House' },
-  { src: heroMobile, alt: 'Course View' },
-  { src: featureDriving, alt: 'Driving Range' },
-  { src: heroDriving, alt: 'Heritage Course' },
-  { src: heroDrivingRange, alt: 'Driving Range' },
-  { src: promo1, alt: 'Event' },
-  { src: promo2, alt: 'Promo' },
+  { src: heroImg, alt: 'Dago Heritage Golf Course aerial view' },
+  { src: featureImg, alt: 'Dago Heritage Golf Course fairway' },
+  { src: featureHotel, alt: 'Swiss-Belresort Hotel at Dago Heritage' },
+  { src: heroMobile, alt: 'Dago Heritage Golf Course scenic view' },
+  { src: featureDriving, alt: 'Dago Heritage Driving Range facility' },
+  { src: heroDriving, alt: 'Dago Heritage Golf Course heritage track' },
+  { src: heroDrivingRange, alt: 'Dago Heritage Driving Range exterior' },
+  { src: promo1, alt: 'Golf event at Dago Heritage' },
+  { src: promo2, alt: 'Promotional event at Dago Heritage' },
 ]
 
 const facilities = [
@@ -51,15 +53,6 @@ const facilities = [
 ]
 
 const holes = Array.from({ length: 18 }, (_, i) => i + 1)
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 32 },
-  visible: (i = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, delay: i * 0.08 },
-  }),
-}
 
 export default function GolfCourse() {
   const [activeHole, setActiveHole] = useState(1)
@@ -144,22 +137,15 @@ export default function GolfCourse() {
       </section>
 
       {/* About The Course Section */}
-      <section id="aboutus" className="py-24 bg-light-bg">
+      <section id="aboutus" className="py-20 bg-light-bg">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Section Label */}
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <p className="text-golf-green font-body text-sm tracking-widest uppercase mb-3">
-              About The Course
-            </p>
-            <div className="w-12 h-0.5 bg-golf-gold mx-auto" />
-          </motion.div>
+          <SectionTitle
+            title="About The Course"
+            align="center"
+            theme="light"
+          />
 
           {/* 2 Column Layout */}
           <div className="grid md:grid-cols-2 gap-14 items-center">
@@ -222,7 +208,8 @@ export default function GolfCourse() {
               <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl">
                 <img
                   src={featureImg}
-                  alt="Dago Heritage Golf Course"
+                  alt="Dago Heritage Golf Course fairway with mountain backdrop"
+                  loading="lazy"
                   className="w-full h-[420px] object-cover"
                 />
                 {/* Overlay badge */}
@@ -240,25 +227,16 @@ export default function GolfCourse() {
       </section>
 
       {/* Course Features Section */}
-      <section className="py-24 bg-dark-bg">
+      <section className="py-20 bg-dark-bg">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Heading */}
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="text-golf-gold font-body text-sm tracking-widest uppercase mb-3">
-              Why Play Here
-            </p>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-4">
-              Course Features
-            </h2>
-            <div className="w-12 h-0.5 bg-golf-gold mx-auto" />
-          </motion.div>
+          <SectionTitle
+            title="Course Features"
+            subtitle="Why Play Here"
+            align="center"
+            theme="dark"
+          />
 
           {/* Grid 3 Kolom */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -334,19 +312,12 @@ export default function GolfCourse() {
       {/* Hole Information Section */}
       <section className="py-20 bg-golf-green/10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-12"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-          >
-            <p className="text-golf-gold text-sm tracking-widest uppercase mb-3">The Course</p>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-4">
-              Hole Information
-            </h2>
-            <div className="w-12 h-0.5 bg-golf-gold mx-auto" />
-          </motion.div>
+          <SectionTitle
+            title="Hole Information"
+            subtitle="The Course"
+            align="center"
+            theme="dark"
+          />
 
           {/* Hole Selector */}
           <div className="flex flex-wrap justify-center gap-2 mb-10">
@@ -375,7 +346,8 @@ export default function GolfCourse() {
           >
             <img
               src={`https://dagoheritage1917.com/img/dago_hole_${activeHole}_detail_mobile.jpg`}
-              alt={`Hole ${activeHole}`}
+              alt={`Dago Heritage Golf Course hole ${activeHole} layout`}
+              loading="lazy"
               className="w-full h-48 md:h-64 object-cover"
               onError={(e) => { e.target.src = featureImg }}
             />
@@ -391,69 +363,46 @@ export default function GolfCourse() {
       {/* Facilities Section */}
       <section className="py-20 bg-dark-bg">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          className="text-center mb-12"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUp}
-        >
-          <p className="text-golf-gold text-sm tracking-widest uppercase mb-3">What We Offer</p>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-4">
-            Perfect Golfing Destination
-          </h2>
-          <div className="w-12 h-0.5 bg-golf-gold mx-auto mb-4" />
-          <p className="text-gray-400 max-w-2xl mx-auto text-sm">
-            DAGO Heritage offers a range of facilities to meet your needs. From exclusive
-            locker room, VIP rooms, restaurant, ball room, driving range, pro shop and more.
-          </p>
-        </motion.div>
+        <SectionTitle
+          title="Perfect Golfing Destination"
+          subtitle="What We Offer"
+          description="DAGO Heritage offers a range of facilities to meet your needs. From exclusive locker room, VIP rooms, restaurant, ball room, driving range, pro shop and more."
+          align="center"
+          theme="dark"
+        />
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {facilities.map((item, i) => (
-            <motion.div
-              key={item.title}
-              className="bg-golf-green/20 border border-golf-green/40 rounded-xl p-6 text-center
-                         hover:-translate-y-2 hover:border-golf-gold/60 hover:shadow-[0_12px_40px_rgba(26,92,56,0.4)]
-                         transition-all duration-300"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeUp}
-              custom={i}
-            >
-              <div className="text-4xl mb-4">{item.icon}</div>
-              <h3 className="font-heading text-xl font-bold text-golf-gold mb-3">
-                {item.title}
-              </h3>
-              <p className="text-gray-400 text-sm leading-relaxed">{item.description}</p>
-            </motion.div>
+            <AnimatedSection key={item.title} direction="up" delay={i * 0.1}>
+              <div
+                className="bg-golf-green/20 border border-golf-green/40 rounded-xl p-6 text-center
+                           hover:-translate-y-2 hover:border-golf-gold/60 hover:shadow-[0_12px_40px_rgba(26,92,56,0.4)]
+                           transition-all duration-300"
+              >
+                <div className="text-4xl mb-4">{item.icon}</div>
+                <h3 className="font-heading text-xl font-bold text-golf-gold mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-gray-400 text-sm leading-relaxed">{item.description}</p>
+              </div>
+            </AnimatedSection>
           ))}
         </div>
         </div>
       </section>
 
       {/* Gallery Section */}
-      <section className="py-24 bg-dark-bg">
+      <section className="py-20 bg-dark-bg">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Heading */}
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="text-golf-gold font-body text-sm tracking-widest uppercase mb-3">Gallery</p>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-4">
-              Moments at Dago Heritage
-            </h2>
-            <div className="w-12 h-0.5 bg-golf-gold mx-auto mb-4" />
-            <p className="text-gray-400 font-body text-sm max-w-xl mx-auto">
-              Some of the photos from events and moments held at DAGO Heritage Golf Course.
-            </p>
-          </motion.div>
+          <SectionTitle
+            title="Moments at Dago Heritage"
+            subtitle="Gallery"
+            description="Some of the photos from events and moments held at DAGO Heritage Golf Course."
+            align="center"
+            theme="dark"
+          />
 
           {/* Masonry-style Grid */}
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -473,6 +422,7 @@ export default function GolfCourse() {
                 <img
                   src={img.src}
                   alt={img.alt}
+                  loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 {/* Hover overlay */}
@@ -556,7 +506,7 @@ export default function GolfCourse() {
       </section>
 
       {/* About Us Section */}
-      <section className="py-24 bg-dark-bg">
+      <section className="py-20 bg-dark-bg">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Top: Logo + Tagline */}
@@ -569,7 +519,8 @@ export default function GolfCourse() {
           >
             <img
               src={logoImg}
-              alt="Dago Heritage 1917"
+              alt="Dago Heritage 1917 Golf Club logo"
+              loading="lazy"
               className="h-20 w-auto object-contain mx-auto mb-6"
             />
             <p className="font-heading text-golf-gold text-xl md:text-2xl italic mb-3">
